@@ -1,0 +1,1 @@
+PODS_OGIMAGEEXTENSIONS_OTHER_LDFLAGS = -framework "CoreImage"
