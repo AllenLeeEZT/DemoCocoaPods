@@ -10,6 +10,7 @@
 #import <PromiseKit.h>
 #import <TSMessage.h>
 #import <SVProgressHUD.h>
+#import <UIImageView+UIActivityIndicatorForSDWebImage.h>
 
 @interface TableViewController ()
 
@@ -43,8 +44,10 @@
     cell.textLabel.text = obj[@"name"];
     //image
     NSString *urlString = [NSString stringWithFormat:@"http://www.eztable.com.tw%@", obj[@"thumb1_mini"]];
-    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]]];
-    cell.imageView.image = image;
+    [cell.imageView setImageWithURL:[NSURL URLWithString:urlString]
+                   placeholderImage:[UIImage imageNamed:@"restaurant"]
+        usingActivityIndicatorStyle:(UIActivityIndicatorViewStyleGray)
+    ];
 
     return cell;
 }
@@ -57,13 +60,13 @@
     NSString *lat = @"25.0367805";
     NSString *lon = @"121.5426982";
     int n = 7;
-    
+
     NSString *urlString =
     [NSString stringWithFormat:@"http://api%@.eztable.com/v2/search/search_restaurant_by_latlng/%@/%@/?n=%i"
-     , (isProduction) ? @"":@"-dev"
-     , lat, lon
-     , n
-     ];
+    , (isProduction) ? @""    :@"-dev"
+    , lat, lon
+    , n
+    ];
 
     [SVProgressHUD showWithStatus:@"loading..."];
     [NSURLConnection GET:urlString].then (^(NSDictionary *jsonDic) {
