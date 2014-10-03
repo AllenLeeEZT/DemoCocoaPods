@@ -11,6 +11,7 @@
 #import <TSMessage.h>
 #import <SVProgressHUD.h>
 #import <UIImageView+UIActivityIndicatorForSDWebImage.h>
+#import <OGImageExtensions.h>
 
 @interface TableViewController ()
 
@@ -44,10 +45,10 @@
     cell.textLabel.text = obj[@"name"];
     //image
     NSString *urlString = [NSString stringWithFormat:@"http://www.eztable.com.tw%@", obj[@"thumb1_mini"]];
-    [cell.imageView setImageWithURL:[NSURL URLWithString:urlString]
-                   placeholderImage:[UIImage imageNamed:@"restaurant"]
-        usingActivityIndicatorStyle:(UIActivityIndicatorViewStyleGray)
-    ];
+    [cell.imageView sd_setImageWithURL:[NSURL URLWithString:urlString] placeholderImage:[UIImage imageNamed:@"restaurant"] completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+        image = [image circularImage];
+        cell.imageView.image = image;
+    }];
 
     return cell;
 }
