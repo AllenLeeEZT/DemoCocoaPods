@@ -9,6 +9,7 @@
 #import "TableViewController.h"
 #import <PromiseKit.h>
 #import <TSMessage.h>
+#import <SVProgressHUD.h>
 
 @interface TableViewController ()
 
@@ -51,6 +52,7 @@
     NSString *lon = @"121.5426982";
     NSString *urlString = [NSString stringWithFormat:@"http://api%@.eztable.com/v2/search/search_restaurant_by_latlng/%@/%@", (isProduction) ? @"":@"-dev", lat, lon];
 
+    [SVProgressHUD showWithStatus:@"loading..."];
     [NSURLConnection GET:urlString].then (^(NSDictionary *jsonDic) {
         //        NSLog(@"LOG:  jsonDic: %@", jsonDic);
         self.dataArray = jsonDic[@"data"][@"docs"];
@@ -61,11 +63,13 @@
                                            subtitle:nil
                                                type:TSMessageNotificationTypeSuccess
                                            duration:0.5
-         ];
+        ];
     }).catch (^(NSError *error) {
         NSLog(@"LOG:  error: %@", error);
         NSString *errorString = error.userInfo[NSLocalizedDescriptionKey];
         [TSMessage showNotificationWithTitle:errorString type:(TSMessageNotificationTypeError)];
+    }).finally (^{
+        [SVProgressHUD dismiss];
     });
 }
 
