@@ -8,6 +8,7 @@
 
 #import "TableViewController.h"
 #import <PromiseKit.h>
+#import <TSMessage.h>
 
 @interface TableViewController ()
 
@@ -45,10 +46,11 @@
     NSLog(@"LOG:  reload");
     //http://api.eztable.com/v2/search/search_restaurant_by_latlng/{LATITUDE}/{LONGITUDE}/?{OPTIONAL PARAMETERS}
 
-    BOOL isProduction = NO;
-    NSString *lat = @"25.0367805";
-    NSString *lon = @"";
-    NSString *urlString = [NSString stringWithFormat:@"http://api%@.eztable.com/v2/search/search_restaurant_by_latlng/%@/%@", (isProduction) ? @"":@"-dev", lat, lon];
+    //    BOOL isProduction = NO;
+    //    NSString *lat = @"25.0367805";
+    //    NSString *lon = @"";
+    //    NSString *urlString = [NSString stringWithFormat:@"http://api%@.eztable.com/v2/search/search_restaurant_by_latlng/%@/%@", (isProduction) ? @"":@"-dev", lat, lon];
+    NSString *urlString = @"http://api.eeeeztable.com/"; //bad url
 
     [NSURLConnection GET:urlString].then (^(NSDictionary *jsonDic) {
         //        NSLog(@"LOG:  jsonDic: %@", jsonDic);
@@ -56,6 +58,8 @@
         [self.tableView reloadData];
     }).catch (^(NSError *error) {
         NSLog(@"LOG:  error: %@", error);
+        NSString *errorString = error.userInfo[NSLocalizedDescriptionKey];
+        [TSMessage showNotificationWithTitle:errorString type:(TSMessageNotificationTypeError)];
     });
 }
 
