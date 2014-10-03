@@ -69,24 +69,28 @@
     ];
 
     [SVProgressHUD showWithStatus:@"loading..."];
-    [NSURLConnection GET:urlString].then (^(NSDictionary *jsonDic) {
-        //        NSLog(@"LOG:  jsonDic: %@", jsonDic);
-        self.dataArray = jsonDic[@"data"][@"docs"];
-        [self.tableView reloadData];
 
-        [TSMessage showNotificationInViewController:self
-                                              title:@"Good Job"
-                                           subtitle:nil
-                                               type:TSMessageNotificationTypeSuccess
-                                           duration:0.5
-        ];
-    }).catch (^(NSError *error) {
-        NSLog(@"LOG:  error: %@", error);
-        NSString *errorString = error.userInfo[NSLocalizedDescriptionKey];
-        [TSMessage showNotificationWithTitle:errorString type:(TSMessageNotificationTypeError)];
-    }).finally (^{
-        [SVProgressHUD dismiss];
-    });
+    [[SDImageCache sharedImageCache] clearMemory];
+    [[SDImageCache sharedImageCache] clearDiskOnCompletion:^{
+        [NSURLConnection GET:urlString].then (^(NSDictionary *jsonDic) {
+            //        NSLog(@"LOG:  jsonDic: %@", jsonDic);
+            self.dataArray = jsonDic[@"data"][@"docs"];
+            [self.tableView reloadData];
+
+            [TSMessage showNotificationInViewController:self
+                                                  title:@"Good Job"
+                                               subtitle:nil
+                                                   type:TSMessageNotificationTypeSuccess
+                                               duration:0.5
+            ];
+        }).catch (^(NSError *error) {
+            NSLog(@"LOG:  error: %@", error);
+            NSString *errorString = error.userInfo[NSLocalizedDescriptionKey];
+            [TSMessage showNotificationWithTitle:errorString type:(TSMessageNotificationTypeError)];
+        }).finally (^{
+            [SVProgressHUD dismiss];
+        });
+    }];
 }
 
 @end
