@@ -46,16 +46,22 @@
     NSLog(@"LOG:  reload");
     //http://api.eztable.com/v2/search/search_restaurant_by_latlng/{LATITUDE}/{LONGITUDE}/?{OPTIONAL PARAMETERS}
 
-    //    BOOL isProduction = NO;
-    //    NSString *lat = @"25.0367805";
-    //    NSString *lon = @"";
-    //    NSString *urlString = [NSString stringWithFormat:@"http://api%@.eztable.com/v2/search/search_restaurant_by_latlng/%@/%@", (isProduction) ? @"":@"-dev", lat, lon];
-    NSString *urlString = @"http://api.eeeeztable.com/"; //bad url
+    BOOL isProduction = NO;
+    NSString *lat = @"25.0367805";
+    NSString *lon = @"121.5426982";
+    NSString *urlString = [NSString stringWithFormat:@"http://api%@.eztable.com/v2/search/search_restaurant_by_latlng/%@/%@", (isProduction) ? @"":@"-dev", lat, lon];
 
     [NSURLConnection GET:urlString].then (^(NSDictionary *jsonDic) {
         //        NSLog(@"LOG:  jsonDic: %@", jsonDic);
         self.dataArray = jsonDic[@"data"][@"docs"];
         [self.tableView reloadData];
+
+        [TSMessage showNotificationInViewController:self
+                                              title:@"Good Job"
+                                           subtitle:nil
+                                               type:TSMessageNotificationTypeSuccess
+                                           duration:0.5
+         ];
     }).catch (^(NSError *error) {
         NSLog(@"LOG:  error: %@", error);
         NSString *errorString = error.userInfo[NSLocalizedDescriptionKey];
