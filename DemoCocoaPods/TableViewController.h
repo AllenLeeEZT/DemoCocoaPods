@@ -11,3 +11,8 @@
 @interface TableViewController : UITableViewController
 
 @end
+
+#pragma mark - NSString (URLEncoding)
+@interface NSString (URLEncoding)
+- (NSString *)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
+@end
