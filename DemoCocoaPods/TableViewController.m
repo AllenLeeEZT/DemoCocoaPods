@@ -11,7 +11,7 @@
 
 @interface TableViewController ()
 
-@property (nonatomic, strong) NSArray *dataArry;
+@property (nonatomic, strong) NSArray *dataArray;
 - (IBAction)reload:(id)sender;
 
 @end
@@ -29,20 +29,17 @@
 
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return self.dataArray.count;
 }
 
-/*
- * - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
- *  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
- *
- *  // Configure the cell...
- *
- *  return cell;
- * }
- */
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    // Configure the cell...
+    id obj = self.dataArray[indexPath.row];
+    cell.textLabel.text = obj[@"name"];
+
+    return cell;
+}
 
 - (IBAction)reload:(id)sender {
     NSLog(@"LOG:  reload");
@@ -54,7 +51,9 @@
     NSString *urlString = [NSString stringWithFormat:@"http://api%@.eztable.com/v2/search/search_restaurant_by_latlng/%@/%@", (isProduction) ? @"":@"-dev", lat, lon];
 
     [NSURLConnection GET:urlString].then (^(NSDictionary *jsonDic) {
-        NSLog(@"LOG:  jsonDic: %@", jsonDic);
+        //        NSLog(@"LOG:  jsonDic: %@", jsonDic);
+        self.dataArray = jsonDic[@"data"][@"docs"];
+        [self.tableView reloadData];
     }).catch (^(NSError *error) {
         NSLog(@"LOG:  error: %@", error);
     });
