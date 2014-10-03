@@ -38,7 +38,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     // Configure the cell...
     id obj = self.dataArray[indexPath.row];
+
+    //name
     cell.textLabel.text = obj[@"name"];
+    //image
+    NSString *urlString = [NSString stringWithFormat:@"http://www.eztable.com.tw%@", obj[@"thumb1_mini"]];
+    UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:urlString]]];
+    cell.imageView.image = image;
 
     return cell;
 }
@@ -50,7 +56,14 @@
     BOOL isProduction = NO;
     NSString *lat = @"25.0367805";
     NSString *lon = @"121.5426982";
-    NSString *urlString = [NSString stringWithFormat:@"http://api%@.eztable.com/v2/search/search_restaurant_by_latlng/%@/%@", (isProduction) ? @"":@"-dev", lat, lon];
+    int n = 7;
+    
+    NSString *urlString =
+    [NSString stringWithFormat:@"http://api%@.eztable.com/v2/search/search_restaurant_by_latlng/%@/%@/?n=%i"
+     , (isProduction) ? @"":@"-dev"
+     , lat, lon
+     , n
+     ];
 
     [SVProgressHUD showWithStatus:@"loading..."];
     [NSURLConnection GET:urlString].then (^(NSDictionary *jsonDic) {
