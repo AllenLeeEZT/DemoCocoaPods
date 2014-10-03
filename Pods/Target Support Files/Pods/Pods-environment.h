@@ -1,0 +1,92 @@
+
+// To check if a library is compiled with CocoaPods you
+// can use the `COCOAPODS` macro definition which is
+// defined in the xcconfigs so it is available in
+// headers also when they are imported in the client
+// project.
+
+
+// OMGHTTPURLRQ
+#define COCOAPODS_POD_AVAILABLE_OMGHTTPURLRQ
+#define COCOAPODS_VERSION_MAJOR_OMGHTTPURLRQ 2
+#define COCOAPODS_VERSION_MINOR_OMGHTTPURLRQ 0
+#define COCOAPODS_VERSION_PATCH_OMGHTTPURLRQ 1
+
+// OMGHTTPURLRQ/RQ
+#define COCOAPODS_POD_AVAILABLE_OMGHTTPURLRQ_RQ
+#define COCOAPODS_VERSION_MAJOR_OMGHTTPURLRQ_RQ 2
+#define COCOAPODS_VERSION_MINOR_OMGHTTPURLRQ_RQ 0
+#define COCOAPODS_VERSION_PATCH_OMGHTTPURLRQ_RQ 1
+
+// OMGHTTPURLRQ/UserAgent
+#define COCOAPODS_POD_AVAILABLE_OMGHTTPURLRQ_UserAgent
+#define COCOAPODS_VERSION_MAJOR_OMGHTTPURLRQ_UserAgent 2
+#define COCOAPODS_VERSION_MINOR_OMGHTTPURLRQ_UserAgent 0
+#define COCOAPODS_VERSION_PATCH_OMGHTTPURLRQ_UserAgent 1
+
+// PromiseKit
+#define COCOAPODS_POD_AVAILABLE_PromiseKit
+#define COCOAPODS_VERSION_MAJOR_PromiseKit 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit 18
+
+// PromiseKit/NSNotificationCenter
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_NSNotificationCenter
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_NSNotificationCenter 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_NSNotificationCenter 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_NSNotificationCenter 18
+
+// PromiseKit/NSURLConnection
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_NSURLConnection
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_NSURLConnection 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_NSURLConnection 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_NSURLConnection 18
+
+// PromiseKit/Pause
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_Pause
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_Pause 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_Pause 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_Pause 18
+
+// PromiseKit/Promise
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_Promise
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_Promise 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_Promise 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_Promise 18
+
+// PromiseKit/UIActionSheet
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_UIActionSheet
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_UIActionSheet 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_UIActionSheet 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_UIActionSheet 18
+
+// PromiseKit/UIAlertView
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_UIAlertView
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_UIAlertView 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_UIAlertView 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_UIAlertView 18
+
+// PromiseKit/UIView
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_UIView
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_UIView 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_UIView 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_UIView 18
+
+// PromiseKit/UIViewController
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_UIViewController
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_UIViewController 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_UIViewController 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_UIViewController 18
+
+// PromiseKit/Until
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_Until
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_Until 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_Until 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_Until 18
+
+// PromiseKit/When
+#define COCOAPODS_POD_AVAILABLE_PromiseKit_When
+#define COCOAPODS_VERSION_MAJOR_PromiseKit_When 0
+#define COCOAPODS_VERSION_MINOR_PromiseKit_When 9
+#define COCOAPODS_VERSION_PATCH_PromiseKit_When 18
+
